@@ -1,0 +1,22 @@
+.circle {
+  width: 20px;
+  height: 20px;
+
+  @for $i from 1 through 30 {
+    &:nth-child(#{$i}) {
+      transform: rotate(#{$i * 360 / 30}deg) translate(50px) scale(1);
+      animation: arcAnimation-#{$i} 0.75s ease-in-out infinite;
+      animation-delay: -$i * 0.75s / 10;
+      background-color: hsla($i * 360 / 30, 100%, 50%, 1);
+      box-shadow: hsla($i * 360 / 30, 100%, 50%, 1) 0px 0px 50px 1px;
+    }
+  }
+}
+
+@for $i from 1 through 30 {
+  @keyframes arcAnimation-#{$i} {
+    100% {
+      transform: rotate(#{$i * 360/30}deg) translate(150px) scale(0);
+    }
+  }
+}
